@@ -1,0 +1,64 @@
+.splash {
+  font-family: arial;
+  position: relative;
+  min-height: 99vh;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.splash--box-title {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+}
+.splash-h1 {
+  color: #0573ff;
+}
+.splash-copyright {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 0.5em;
+  color: #837c7c;
+}
+.splash--box-loading {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3em;
+}
+.balls {
+  width: 3.5em;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.balls div {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background-color: #0573ff;
+  transform: translateY(-100%);
+  animation: wave 0.8s ease-in-out alternate infinite;
+}
+
+.balls div:nth-of-type(1) {
+  animation-delay: -0.4s;
+}
+
+.balls div:nth-of-type(2) {
+  animation-delay: -0.2s;
+}
+
+@keyframes wave {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
