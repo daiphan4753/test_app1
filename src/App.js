@@ -6,11 +6,27 @@ import Product from "./screen/Product";
 import Order from "./screen/Order";
 import Statistic from "./screen/Statistic";
 import User from "./screen/User";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation } from "react-router-dom";
+import {
+  faHouse,
+  faCartPlus,
+  faChartSimple,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
-  const [value, setValue] = useState("home");
+  const [value, setValue] = useState();
   const nav = useNavigate();
+  const sizeIcon = "lg";
+  const location = useLocation().pathname;
+  useEffect(() => {
+    console.log(location, value);
+    if (value == undefined || value == null){
+      setValue(location);
+    }
+  }, [location]);
   return (
     <div className="App">
       <Routes>
@@ -33,24 +49,24 @@ function App() {
         onChange={(e, val) => setValue(val)}
       >
         <BottomNavigationAction
-          value="home"
-          label="Trang chủ"
+          value="/home"
           onClick={() => nav("/home")}
+          icon={<FontAwesomeIcon size={sizeIcon} icon={faHouse} />}
         />
         <BottomNavigationAction
-          value="order"
-          label="Đơn hàng"
+          value="/order"
           onClick={() => nav("/order")}
+          icon={<FontAwesomeIcon size={sizeIcon} icon={faCartPlus} />}
         />
         <BottomNavigationAction
-          value="statistic"
-          label="Thống kê"
+          value="/statistic"
           onClick={() => nav("/statistic")}
+          icon={<FontAwesomeIcon size={sizeIcon} icon={faChartSimple} />}
         />
         <BottomNavigationAction
-          value="User"
-          label="Tôi"
+          value="/user"
           onClick={() => nav("/user")}
+          icon={<FontAwesomeIcon size={sizeIcon} icon={faUser} />}
         />
       </BottomNavigation>
     </div>
